@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>Orbit D100H</AssemblyName>
+    <ApplicationIcon>Assets\OrbitD100H.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- WPF owns startup; its DPI awareness must be declared before any HWND is created. -->
+    <NoWarn>$(NoWarn);WFO0003</NoWarn>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../OrbitD100H.Core/OrbitD100H.Core.csproj" /></ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\OrbitD100H.ico" />
+    <Using Include="System" /><Using Include="System.IO" /><Using Include="System.Linq" />
+    <Using Include="System.Collections.Generic" /><Using Include="System.Threading" />
+    <Using Include="System.Threading.Tasks" />
+    <None Include="../../THIRD-PARTY-NOTICES.md" Link="THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="../../LICENSE" Link="LICENSE" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="../../licenses/*" Link="licenses/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

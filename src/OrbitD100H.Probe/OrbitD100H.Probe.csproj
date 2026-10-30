@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><AssemblyName>Orbit D100H Probe</AssemblyName></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../OrbitD100H.Core/OrbitD100H.Core.csproj" /></ItemGroup>
+  <ItemGroup><Compile Include="../OrbitD100H.App/KeyboardLayout.cs" Link="KeyboardLayout.cs" /></ItemGroup>
+  <ItemGroup><Compile Include="../OrbitD100H.App/HeldKeys.cs" Link="HeldKeys.cs" /></ItemGroup>
+  <ItemGroup><Compile Include="../OrbitD100H.App/Controller.cs" Link="Controller.cs" /></ItemGroup>
+  <ItemGroup>
+    <None Include="../../THIRD-PARTY-NOTICES.md" Link="THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="../../LICENSE" Link="LICENSE" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="../../licenses/*" Link="licenses/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

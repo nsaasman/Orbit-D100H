@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+artifacts/
+*.log
+.vs/
+*.user
+*.suo
+.codebase-memory/
+Microsoft.PowerShell.Core/
+HARDWARE-VALIDATIE.md

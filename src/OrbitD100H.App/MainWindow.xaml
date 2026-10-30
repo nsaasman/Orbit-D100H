@@ -1,0 +1,126 @@
+<Window x:Class="OrbitD100H.App.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:OrbitD100H.App" Title="Orbit D100H" Icon="Assets/OrbitD100H.ico"
+        SizeToContent="WidthAndHeight" Background="{DynamicResource WindowBackground}" Foreground="{DynamicResource Ink}"
+        FontFamily="Segoe UI" FontSize="14" WindowStartupLocation="CenterScreen" Loaded="WindowLoaded" SizeChanged="WindowSizeChanged" LocationChanged="WindowLocationChanged">
+  <ScrollViewer x:Name="WindowScroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+  <Grid Margin="24">
+    <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+    <Grid Margin="0,0,0,24">
+      <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+      <StackPanel>
+        <TextBlock Text="Orbit D100H" FontSize="30" FontWeight="SemiBold" />
+        <TextBlock x:Name="ConnectionText" Margin="0,4,0,0" Foreground="{DynamicResource Muted}" TextWrapping="Wrap" />
+      </StackPanel>
+      <ToggleButton x:Name="DarkThemeCheck" Grid.Column="1" Content="Donker thema" Style="{StaticResource ThemeSwitch}"
+                    AutomationProperties.Name="Licht of donker thema" VerticalAlignment="Center" Margin="0,0,16,0" Click="ChangeTheme" />
+      <Button x:Name="PauseButton" Grid.Column="2" Content="Pauzeren" VerticalAlignment="Center" Click="TogglePause" />
+    </Grid>
+    <Grid x:Name="BodyGrid" Grid.Row="1">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="220" /><ColumnDefinition Width="24" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+      <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+      <Border x:Name="ProfilePanel" Background="{DynamicResource Surface}" CornerRadius="8" Padding="16">
+        <DockPanel>
+          <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="Profielen" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,12" />
+            <TextBlock Text="Draaien volgt het programma onder de muis. Knoppen volgen het actieve programma."
+                       TextWrapping="Wrap" Foreground="{DynamicResource Muted}" Margin="0,0,0,16" />
+          </StackPanel>
+          <StackPanel DockPanel.Dock="Bottom" Margin="0,16,0,0">
+            <Button Content="Programma toevoegen" Click="AddProgram" Margin="0,0,0,8" />
+            <Button x:Name="RemoveButton" Content="Profiel verwijderen" Click="RemoveProgram" Margin="0,0,0,16" />
+            <CheckBox x:Name="HapticFeedbackCheck" Click="MarkDirty"
+                      ToolTip="Geldt voor alle profielen. Wordt na opslaan toegepast." Margin="0,0,0,12"
+                      AutomationProperties.Name="Haptische feedback bij draaien">
+              <TextBlock Text="Haptische feedback bij draaien" TextWrapping="Wrap" />
+            </CheckBox>
+            <CheckBox x:Name="StartupCheck" Content="Starten met Windows" Click="MarkDirty" />
+            <TextBlock Text="Sluiten verbergt dit venster. De draaiknop blijft actief in het systeemvak."
+                       TextWrapping="Wrap" Foreground="{DynamicResource Muted}" FontSize="12" Margin="0,12,0,0" />
+          </StackPanel>
+          <ListBox x:Name="ProfilesList" SelectionChanged="SelectProfile" BorderThickness="0"
+                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Name}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" /></DataTemplate></ListBox.ItemTemplate>
+          </ListBox>
+        </DockPanel>
+      </Border>
+      <ScrollViewer x:Name="EditorScroll" Grid.Column="2" Grid.Row="0" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="0,0,8,0">
+          <Border x:Name="RoutingBanner" Background="{DynamicResource Banner}" Padding="16" CornerRadius="8" Margin="0,0,0,16" Visibility="Collapsed">
+            <StackPanel>
+              <TextBlock Text="Schakel scrollen onder de muis in" FontWeight="SemiBold" />
+              <TextBlock Text="Voor scrollprofielen: zet bij Windows muisinstellingen ‘Door inactieve vensters schuiven wanneer ik deze aanwijs’ aan. Volumeregeling blijft werken."
+                         TextWrapping="Wrap" Margin="0,4,0,12" />
+              <Button Content="Muisinstellingen openen" HorizontalAlignment="Left" Click="OpenMouseSettings" />
+            </StackPanel>
+          </Border>
+          <Border Background="{DynamicResource Surface}" CornerRadius="8" Padding="24" Margin="0,0,0,16">
+            <StackPanel>
+              <TextBlock Text="PROFIEL AANPASSEN" FontSize="11" FontWeight="Bold" Foreground="{DynamicResource Accent}" />
+              <TextBlock x:Name="ProfileTitle" FontSize="24" FontWeight="SemiBold" TextWrapping="Wrap" />
+              <TextBlock x:Name="ProfilePath" TextWrapping="Wrap" Foreground="{DynamicResource Muted}" Margin="0,4,0,24" />
+              <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <StackPanel>
+                  <TextBlock Text="Draaiknop doet" FontWeight="SemiBold" Margin="0,0,0,8" />
+                  <Border BorderBrush="{DynamicResource Border}" BorderThickness="1" CornerRadius="5" Margin="0,0,24,0" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" KeyboardNavigation.TabNavigation="Once" AutomationProperties.Name="Draaiknopfunctie">
+                      <RadioButton x:Name="ScrollDialButton" GroupName="DialMode" Content="Scrollen" Style="{StaticResource SegmentOption}"
+                                   AutomationProperties.Name="Draaiknopfunctie: scrollen" Checked="DialModeChanged" />
+                      <RadioButton x:Name="VolumeDialButton" GroupName="DialMode" Content="Volume" Style="{StaticResource SegmentOption}"
+                                   AutomationProperties.Name="Draaiknopfunctie: volume" Checked="DialModeChanged" />
+                    </StackPanel>
+                  </Border>
+                </StackPanel>
+                <CheckBox x:Name="InvertCheck" Grid.Column="1" Content="Richting omkeren" VerticalAlignment="Bottom" Click="MarkDirty" />
+              </Grid>
+              <StackPanel x:Name="ScrollSettings">
+              <Grid Margin="0,24,0,0">
+                <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <TextBlock Text="Scrollmodus" FontWeight="SemiBold" /><TextBlock x:Name="SpeedLabel" Grid.Column="1" Foreground="{DynamicResource Muted}" />
+              </Grid>
+              <Slider x:Name="SpeedSlider" Minimum="1" Maximum="12" TickFrequency="1" IsSnapToTickEnabled="True"
+                      ValueChanged="SpeedChanged" Margin="0,12,0,8" AutomationProperties.Name="Scrollsnelheid" />
+              <ComboBox x:Name="ModeCombo" SelectionChanged="MarkDirty" Margin="0,0,0,8" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Vaste stappen" /><ComboBoxItem Content="Vloeiend" />
+              </ComboBox>
+              <TextBlock Text="Rechtsom omlaag, linksom omhoog. Vloeiend scrollen heeft geen uitroleffect. Het doelprogramma bepaalt de weergave."
+                         TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource Muted}" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+          <Border Background="{DynamicResource Surface}" CornerRadius="8" Padding="24">
+            <StackPanel>
+              <TextBlock Text="Knoppen" FontSize="20" FontWeight="SemiBold" />
+              <TextBlock Text="Sneltoetsen blijven ingedrukt zolang je een losse knop vasthoudt. Media-acties en draaiknopdruk geven één aanslag. Klik een knop om de actie te kiezen."
+                         TextWrapping="Wrap" Foreground="{DynamicResource Muted}" Margin="0,8,0,16" />
+              <Grid>
+                <Grid x:Name="ButtonLayoutGrid">
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="224" /><ColumnDefinition Width="24" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                <local:DeviceDiagram x:Name="Diagram" VerticalAlignment="Top" />
+                <StackPanel x:Name="MappingEditor" Grid.Column="2">
+                  <StackPanel x:Name="MappingsPanel" />
+                  <TextBlock Text="Kies modifiers en een hoofdtoets, of klik Combinatie vastleggen. Druk de combinatie in en laat alle toetsen los. Tijdens vastleggen wordt de combinatie tegengehouden. Esc annuleert."
+                             TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource Muted}" Margin="0,12,0,0" />
+                </StackPanel>
+                </Grid>
+              </Grid>
+            </StackPanel>
+          </Border>
+          <TextBlock Text="Administratorvensters vallen buiten deze versie. Windows kan invoer naar verhoogde programma’s blokkeren."
+                     TextWrapping="Wrap" Foreground="{DynamicResource Muted}" FontSize="12" Margin="0,16,0,0" />
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+    <Grid Grid.Row="2" Margin="0,16,0,0">
+      <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+      <StackPanel VerticalAlignment="Center">
+              <TextBlock x:Name="ActivityText" Foreground="{DynamicResource Muted}" FontSize="12" TextWrapping="Wrap" />
+        <TextBlock x:Name="FeedbackText" TextWrapping="Wrap" Margin="0,4,16,0" />
+      </StackPanel>
+      <Button x:Name="SaveButton" Grid.Column="1" Content="Instellingen opslaan" Click="SaveClick" VerticalAlignment="Center"
+              Background="{DynamicResource SavedBackground}" BorderBrush="{DynamicResource SavedBorder}" Margin="0" />
+    </Grid>
+  </Grid>
+  </ScrollViewer>
+</Window>

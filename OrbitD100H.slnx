@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/OrbitD100H.Core/OrbitD100H.Core.csproj" />
+  <Project Path="src/OrbitD100H.App/OrbitD100H.App.csproj" />
+  <Project Path="src/OrbitD100H.Probe/OrbitD100H.Probe.csproj" />
+</Solution>
