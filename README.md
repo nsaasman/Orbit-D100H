@@ -6,6 +6,8 @@ driverinstallatie, account of internetverbinding.
 
 **[Download de Windows-app](https://github.com/nsaasman/Orbit-D100H/releases/latest)**
 
+![Orbit D100H in donker thema](docs/images/orbit-d100h.png)
+
 ## Downloaden en installeren
 
 1. Open de [nieuwste release](https://github.com/nsaasman/Orbit-D100H/releases/latest)
