@@ -215,6 +215,11 @@ versturen. Andere volumetoetsen worden niet geblokkeerd.
 
 Zie `THIRD-PARTY-NOTICES.md` voor de licentie van de gebruikte protocolmapping.
 
+## Contributors
+
+- [Niek Aasman (@nsaasman)](https://github.com/nsaasman) — maker en beheerder.
+- [OpenAI Codex](https://openai.com/codex/) — AI-assistent bij ontwikkeling, tests en documentatie.
+
 ## Licentie
 
 Orbit D100H is beschikbaar onder de [MIT-licentie](LICENSE).
