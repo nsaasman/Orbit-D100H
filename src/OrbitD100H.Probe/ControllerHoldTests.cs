@@ -18,7 +18,7 @@ internal static class ControllerHoldTests
         settings.General.Buttons[8] = new() { Kind = ActionKind.Shortcut, Keys = [0xA2, 0x56] };
         WindowsInput.Reset();
         var controller = new Controller(settings);
-        controller.Connection(true, "Test verbonden");
+        controller.Connection(true, new("Connected"));
         void Press(int button) => controller.Receive(new(EventKind.Press, button));
         void Release(int button) => controller.Receive(new(EventKind.Release, button));
 
@@ -55,7 +55,7 @@ internal static class ControllerHoldTests
             {
                 case "pauze": controller.Pause(true); controller.Pause(false); break;
                 case "opname": controller.SetCapturing(true); controller.SetCapturing(false); break;
-                case "verbinding": controller.Connection(false, "Uit"); controller.Connection(true, "Aan"); break;
+                case "verbinding": controller.Connection(false, new("Closed")); controller.Connection(true, new("Connected")); break;
                 case "opslaan": controller.Update(settings); break;
                 case "focus": WindowsInput.ForegroundWindow = 11; controller.Poll(); break;
             }

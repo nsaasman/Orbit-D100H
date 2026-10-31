@@ -14,17 +14,19 @@ internal sealed class Controller : IAsyncDisposable
     private bool paused;
     private bool capturing;
     private bool routing;
-    private string connection = "Verbinden…";
-    private string? error;
+    private LocalizedText connection = new("Connecting");
+    private LocalizedText? error;
     private Task? deviceTask;
     private Task? scrollTask;
     private nint heldWindow;
     public event Action? Changed;
-    public string LastEvent { get; private set; } = "Wacht op bediening";
-    public string ActiveProfile { get; private set; } = "Algemeen";
+    private LocalizedText lastEvent = new("Waiting");
+    public string LastEvent { get { lock (sync) return lastEvent.ToString(); } }
+    private Profile? activeProfile;
+    public string ActiveProfile { get { lock (sync) return activeProfile?.ProgramPath is null ? Text.Get("General") : activeProfile.Name; } }
     public bool IsPaused { get { lock (sync) return paused; } }
     public bool Routing { get { lock (sync) return routing; } }
-    public string Status { get { lock (sync) return error ?? (capturing ? "Toetscombinatie vastleggen · " + connection : paused ? "Gepauzeerd · " + connection : connection); } }
+    public string Status { get { lock (sync) return error?.ToString() ?? (capturing ? Text.Get("CapturingStatus", connection) : paused ? Text.Get("PausedStatus", connection) : connection.ToString()); } }
 
     public Controller(Settings settings) { this.settings = settings.Copy(); routing = WindowsInput.RoutesUnderMouse(); }
     public void Start()
@@ -76,7 +78,8 @@ internal sealed class Controller : IAsyncDisposable
         try { WindowsInput.Release(); return true; }
         catch (Win32Exception e)
         {
-            if (error != e.Message) { error = e.Message; Changed?.Invoke(); }
+            var message = Text.Error(e);
+            if (error?.ToString() != message.ToString()) { error = message; Changed?.Invoke(); }
             return false;
         }
     }
@@ -89,7 +92,7 @@ internal sealed class Controller : IAsyncDisposable
         return foreground == 0 || foreground == heldWindow || TryRelease();
     }
 
-    internal void Connection(bool state, string message)
+    internal void Connection(bool state, LocalizedText message)
     {
         lock (sync)
         {
@@ -103,8 +106,9 @@ internal sealed class Controller : IAsyncDisposable
     {
         lock (sync)
         {
-            LastEvent = e.Kind == EventKind.Rotate ? (e.Direction == 1 ? "Draaien rechtsom" : "Draaien linksom")
-                : $"{(e.Button == 8 ? "Draaiknop" : $"Knop {ButtonLayout.Number(e.Button)}")} {(e.Kind == EventKind.Press ? "ingedrukt" : "losgelaten")}";
+            lastEvent = e.Kind == EventKind.Rotate ? new(e.Direction == 1 ? "RotateClockwise" : "RotateCounterclockwise")
+                : new(e.Kind == EventKind.Press ? "Pressed" : "Released",
+                    e.Button == 8 ? new LocalizedText("Dial") : new LocalizedText("Button", ButtonLayout.Number(e.Button)));
             try
             {
                 var ready = CheckHeldTarget();
@@ -115,7 +119,7 @@ internal sealed class Controller : IAsyncDisposable
                 {
                     var target = WindowsInput.Target(true);
                     var profile = settings.Select(target.Program);
-                    ActiveProfile = profile.Name;
+                    activeProfile = profile;
                     routing = WindowsInput.RoutesUnderMouse();
                     if (profile.DialMode == DialMode.Volume)
                     {
@@ -136,7 +140,7 @@ internal sealed class Controller : IAsyncDisposable
                     {
                         var target = WindowsInput.Target(false);
                         var profile = settings.Select(target.Program);
-                        ActiveProfile = profile.Name;
+                        activeProfile = profile;
                         if (target.Window != 0 && profile.Buttons.TryGetValue(e.Button, out var action))
                         {
                             if (e.Button != 8 && action.Kind == ActionKind.Shortcut)
@@ -150,7 +154,7 @@ internal sealed class Controller : IAsyncDisposable
                 }
                 error = null;
             }
-            catch (Win32Exception ex) { error = ex.Message; buffer.Clear(); TryRelease(); }
+            catch (Win32Exception ex) { error = Text.Error(ex); buffer.Clear(); TryRelease(); }
             finally { Changed?.Invoke(); }
         }
     }
@@ -175,7 +179,7 @@ internal sealed class Controller : IAsyncDisposable
                 if (!connected || paused || capturing || !buffer.HasPending) return;
                 WindowsInput.Wheel(buffer.Take(WindowsInput.Target(true).Window, Environment.TickCount64));
             }
-            catch (Win32Exception e) { error = e.Message; buffer.Clear(); TryRelease(); Changed?.Invoke(); }
+            catch (Win32Exception e) { error = Text.Error(e); buffer.Clear(); TryRelease(); Changed?.Invoke(); }
         }
     }
 

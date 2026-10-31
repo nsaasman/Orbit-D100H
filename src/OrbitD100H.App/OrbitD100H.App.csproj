@@ -11,6 +11,7 @@
     <NoWarn>$(NoWarn);WFO0003</NoWarn>
   </PropertyGroup>
   <ItemGroup><ProjectReference Include="../OrbitD100H.Core/OrbitD100H.Core.csproj" /></ItemGroup>
+  <ItemGroup><InternalsVisibleTo Include="OrbitD100H.UiTests" /></ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\OrbitD100H.ico" />
     <Using Include="System" /><Using Include="System.IO" /><Using Include="System.Linq" />

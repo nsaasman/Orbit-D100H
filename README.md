@@ -1,12 +1,33 @@
 # Orbit D100H
 
-Nederlandstalige Windows-app voor scrollen, knoptoewijzingen en profielen per
+[Nederlands](README.md) · [English](README.en.md)
+
+Windows-app voor scrollen, knoptoewijzingen en profielen per
 programma. Werkt rechtstreeks via Bluetooth HID, zonder Ulanzi Studio,
 driverinstallatie, account of internetverbinding.
 
 **[Download de Windows-app](https://github.com/nsaasman/Orbit-D100H/releases/latest)**
 
 ![Orbit D100H in donker thema](docs/images/orbit-d100h.png)
+
+## Taal kiezen
+
+Kies bovenaan de app **Nederlands**, **English**, **Deutsch**, **Français** of
+**Español**. De hele interface wisselt direct, inclusief het systeemvakmenu,
+statusmeldingen en de sneltoetseditor. De app onthoudt de keuze na herstart.
+Zonder opgeslagen keuze volgt de app de Windows-weergavetaal; andere talen
+vallen terug op Engels.
+
+Taalwissel bewaart de geselecteerde knop, het profiel en nog niet opgeslagen
+bewerkingen. De taalkeuze slaat die bewerkingen niet op. Een lopende
+sneltoetsopname wordt eerst geannuleerd, met behoud van de vorige combinatie
+en pauzestand. Profielnamen, programmapaden en de Windows-toetsenbordindeling
+blijven ongewijzigd. De weergavenaam van het algemene profiel wordt wel vertaald.
+
+De taalvoorkeur staat apart van profielinstellingen, naast de themavoorkeur in
+`HKEY_CURRENT_USER\Software\D100HControl` onder `Language`. Windows-dialogen
+en systeemfoutdetails volgen Windows. Het afzonderlijke diagnoseprogramma
+Probe is niet volledig vertaald.
 
 ## Downloaden en installeren
 
@@ -147,6 +168,7 @@ Voer deze opdrachten uit in de projectmap, met een .NET 10 SDK:
 ```powershell
 dotnet build .\OrbitD100H.slnx -c Release
 dotnet ".\src\OrbitD100H.Probe\bin\Release\net10.0-windows\Orbit D100H Probe.dll" --self-test
+dotnet ".\src\OrbitD100H.UiTests\bin\Release\net10.0-windows\OrbitD100H.UiTests.dll"
 dotnet ".\src\OrbitD100H.Probe\bin\Release\net10.0-windows\Orbit D100H Probe.dll" --output .\artifacts\hardware\collections.json
 ```
 
@@ -155,9 +177,17 @@ scrollrichting, behoud van totale scrolldelta, doelwisseling, instellingenopslag
 en bescherming van beschadigde bestanden. Een vertraagd testtransport controleert
 ook dat Bluetooth-schrijftijd niet bovenop het keepalive-interval komt.
 
+De UI-controles openen testvensters en controleren taalwissel, onopgeslagen
+bewerkingen, annuleren van een opname en beide thema’s bij twee vensterbreedtes.
+Ze starten geen HID-sessie en sturen geen toetsen. Ze hebben een interactieve
+Windows-sessie en toegang tot de gebruikersvoorkeuren in het register nodig.
+De oorspronkelijke taal- en themavoorkeur worden na afloop hersteld.
+Voeg `artifacts\ui-localization` als argument toe om schermafbeeldingen te bewaren.
+
 ## Diagnose en hardwareproef
 
-De regressiesuite bevat 229 automatische controles. Op het ontwikkelsysteem
+De regressiesuite controleert ook vertalingen, taalherkenning en het meewisselen
+van bestaande meldingen. Op het ontwikkelsysteem
 zijn scrollen, knoppen, haptische feedback en opnieuw verbinden praktisch
 bevestigd. Herstel na Windows-slaapstand blijft nog onbeproefd. Controleer
 de werking op je eigen apparaat met de onderstaande proef.

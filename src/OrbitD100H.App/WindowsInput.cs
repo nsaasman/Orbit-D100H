@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Text;
+using OrbitD100H.Core;
 
 namespace OrbitD100H.App;
 
@@ -65,7 +66,7 @@ internal static class WindowsInput
     private static void Send(Input input)
     {
         if (SendInput(1, [input], Marshal.SizeOf<Input>()) != 1)
-            throw new Win32Exception(Marshal.GetLastWin32Error(), "Windows weigert invoer. Controleer of het doelprogramma als administrator draait.");
+            throw Text.Describe(new Win32Exception(Marshal.GetLastWin32Error(), Text.Get("InputRefused")), "InputRefused");
     }
 
     [StructLayout(LayoutKind.Sequential)] private struct Point { public int X, Y; }

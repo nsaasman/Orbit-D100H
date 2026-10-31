@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Raw" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Profielen</value>
+  </data>
+  <data name="RoutingHelp" xml:space="preserve">
+    <value>Draaien volgt het programma onder de muis. Knoppen volgen het actieve programma.</value>
+  </data>
+  <data name="AddProgram" xml:space="preserve">
+    <value>Programma toevoegen</value>
+  </data>
+  <data name="RemoveProfile" xml:space="preserve">
+    <value>Profiel verwijderen</value>
+  </data>
+  <data name="Haptic" xml:space="preserve">
+    <value>Haptische feedback bij draaien</value>
+  </data>
+  <data name="HapticTip" xml:space="preserve">
+    <value>Geldt voor alle profielen. Wordt na opslaan toegepast.</value>
+  </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Starten met Windows</value>
+  </data>
+  <data name="CloseHelp" xml:space="preserve">
+    <value>Sluiten verbergt dit venster. De draaiknop blijft actief in het systeemvak.</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Donker thema</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Licht thema</value>
+  </data>
+  <data name="ThemeSwitch" xml:space="preserve">
+    <value>Licht of donker thema</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Pauzeren</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Hervatten</value>
+  </data>
+  <data name="OpenSettings" xml:space="preserve">
+    <value>Instellingen openen</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Afsluiten</value>
+  </data>
+  <data name="AlreadyRunning" xml:space="preserve">
+    <value>Orbit D100H is al actief. Open het venster via het pictogram in het systeemvak.</value>
+  </data>
+  <data name="EnableRouting" xml:space="preserve">
+    <value>Schakel scrollen onder de muis in</value>
+  </data>
+  <data name="RoutingInstructions" xml:space="preserve">
+    <value>Voor scrollprofielen: zet bij Windows muisinstellingen ‘Door inactieve vensters schuiven wanneer ik deze aanwijs’ aan. Volumeregeling blijft werken.</value>
+  </data>
+  <data name="OpenMouseSettings" xml:space="preserve">
+    <value>Muisinstellingen openen</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>PROFIEL AANPASSEN</value>
+  </data>
+  <data name="GeneralDescription" xml:space="preserve">
+    <value>Standaard voor programma’s zonder eigen profiel</value>
+  </data>
+  <data name="DialDoes" xml:space="preserve">
+    <value>Draaiknop doet</value>
+  </data>
+  <data name="DialFunction" xml:space="preserve">
+    <value>Draaiknopfunctie</value>
+  </data>
+  <data name="Scroll" xml:space="preserve">
+    <value>Scrollen</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="DialScroll" xml:space="preserve">
+    <value>Draaiknopfunctie: scrollen</value>
+  </data>
+  <data name="DialVolume" xml:space="preserve">
+    <value>Draaiknopfunctie: volume</value>
+  </data>
+  <data name="Invert" xml:space="preserve">
+    <value>Richting omkeren</value>
+  </data>
+  <data name="ScrollMode" xml:space="preserve">
+    <value>Scrollmodus</value>
+  </data>
+  <data name="ScrollSpeed" xml:space="preserve">
+    <value>Scrollsnelheid</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Wielstappen per draaistap: {0}</value>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Vaste stappen</value>
+  </data>
+  <data name="Smooth" xml:space="preserve">
+    <value>Vloeiend</value>
+  </data>
+  <data name="ScrollHelp" xml:space="preserve">
+    <value>Rechtsom omlaag, linksom omhoog. Vloeiend scrollen heeft geen uitroleffect. Het doelprogramma bepaalt de weergave.</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>Knoppen</value>
+  </data>
+  <data name="ButtonsHelp" xml:space="preserve">
+    <value>Sneltoetsen blijven ingedrukt zolang je een losse knop vasthoudt. Media-acties en draaiknopdruk geven één aanslag. Klik een knop om de actie te kiezen.</value>
+  </data>
+  <data name="ShortcutHelp" xml:space="preserve">
+    <value>Kies modifiers en een hoofdtoets, of klik Combinatie vastleggen. Druk de combinatie in en laat alle toetsen los. Tijdens vastleggen wordt de combinatie tegengehouden. Esc annuleert.</value>
+  </data>
+  <data name="AdminHelp" xml:space="preserve">
+    <value>Administratorvensters vallen buiten deze versie. Windows kan invoer naar verhoogde programma’s blokkeren.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Instellingen opslaan</value>
+  </data>
+  <data name="ApplyAfterSave" xml:space="preserve">
+    <value>Instellingen worden alleen na opslaan toegepast.</value>
+  </data>
+  <data name="Unsaved" xml:space="preserve">
+    <value>Niet opgeslagen wijzigingen</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Instellingen opgeslagen.</value>
+  </data>
+  <data name="ThemeApplied" xml:space="preserve">
+    <value>Thema toegepast.</value>
+  </data>
+  <data name="ExitQuestion" xml:space="preserve">
+    <value>Wijzigingen opslaan voordat Orbit D100H afsluit?</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>{0} · Runtimeprofiel onder de muis: {1}</value>
+  </data>
+  <data name="Button" xml:space="preserve">
+    <value>Knop {0}</value>
+  </data>
+  <data name="ButtonAction" xml:space="preserve">
+    <value>Knop {0} actie</value>
+  </data>
+  <data name="ButtonMainKey" xml:space="preserve">
+    <value>Knop {0} hoofdtoets</value>
+  </data>
+  <data name="ButtonModifier" xml:space="preserve">
+    <value>Knop {0} {1}</value>
+  </data>
+  <data name="ButtonPosition" xml:space="preserve">
+    <value>Knop {0} · {1}</value>
+  </data>
+  <data name="TopLeft" xml:space="preserve">
+    <value>Boven links</value>
+  </data>
+  <data name="TopMiddle" xml:space="preserve">
+    <value>Boven midden</value>
+  </data>
+  <data name="TopRight" xml:space="preserve">
+    <value>Boven rechts</value>
+  </data>
+  <data name="UpperLeft" xml:space="preserve">
+    <value>Links boven</value>
+  </data>
+  <data name="UpperRight" xml:space="preserve">
+    <value>Rechts boven</value>
+  </data>
+  <data name="LowerLeft" xml:space="preserve">
+    <value>Links onder</value>
+  </data>
+  <data name="LowerRight" xml:space="preserve">
+    <value>Rechts onder</value>
+  </data>
+  <data name="DialPress" xml:space="preserve">
+    <value>Draaiknopdruk</value>
+  </data>
+  <data name="NoAction" xml:space="preserve">
+    <value>Geen actie</value>
+  </data>
+  <data name="Shortcut" xml:space="preserve">
+    <value>Sneltoets</value>
+  </data>
+  <data name="PlayPause" xml:space="preserve">
+    <value>Afspelen / pauzeren</value>
+  </data>
+  <data name="VolumeUp" xml:space="preserve">
+    <value>Volume omhoog</value>
+  </data>
+  <data name="VolumeDown" xml:space="preserve">
+    <value>Volume omlaag</value>
+  </data>
+  <data name="Mute" xml:space="preserve">
+    <value>Dempen</value>
+  </data>
+  <data name="ChooseKey" xml:space="preserve">
+    <value>Kies een toets…</value>
+  </data>
+  <data name="RecordShortcut" xml:space="preserve">
+    <value>Combinatie vastleggen</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Rechts</value>
+  </data>
+  <data name="Generic" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="ModifierLeft" xml:space="preserve">
+    <value>{0} links</value>
+  </data>
+  <data name="ModifierRight" xml:space="preserve">
+    <value>{0} rechts</value>
+  </data>
+  <data name="ModifierGeneric" xml:space="preserve">
+    <value>{0} (algemeen)</value>
+  </data>
+  <data name="RecordingHelp" xml:space="preserve">
+    <value>Druk de combinatie in en laat alle toetsen los. Esc annuleert. Maximaal 20 seconden.</value>
+  </data>
+  <data name="ChooseKeyHelp" xml:space="preserve">
+    <value>Kies een toets, bijvoorbeeld S.</value>
+  </data>
+  <data name="KeyCode" xml:space="preserve">
+    <value>Toets {0:X2}</value>
+  </data>
+  <data name="Space" xml:space="preserve">
+    <value>Spatie</value>
+  </data>
+  <data name="Backspace" xml:space="preserve">
+    <value>Backspace</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="Escape" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="PageUp" xml:space="preserve">
+    <value>Page Up</value>
+  </data>
+  <data name="PageDown" xml:space="preserve">
+    <value>Page Down</value>
+  </data>
+  <data name="ArrowLeft" xml:space="preserve">
+    <value>Pijl links</value>
+  </data>
+  <data name="ArrowRight" xml:space="preserve">
+    <value>Pijl rechts</value>
+  </data>
+  <data name="ArrowUp" xml:space="preserve">
+    <value>Pijl omhoog</value>
+  </data>
+  <data name="ArrowDown" xml:space="preserve">
+    <value>Pijl omlaag</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Verbinden…</value>
+  </data>
+  <data name="ConnectingDevice" xml:space="preserve">
+    <value>Verbinden met D100H…</value>
+  </data>
+  <data name="DeviceMissing" xml:space="preserve">
+    <value>Geen D100H gevonden. Zet de gekoppelde draaiknop aan.</value>
+  </data>
+  <data name="MultipleDevices" xml:space="preserve">
+    <value>Meerdere D100H-vendorcollecties gevonden. Verbind één draaiknop.</value>
+  </data>
+  <data name="ConnectionInterrupted" xml:space="preserve">
+    <value>Verbinding onderbroken. Opnieuw verbinden… ({0})</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Afgesloten</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>D100H verbonden</value>
+  </data>
+  <data name="HapticUnconfirmed" xml:space="preserve">
+    <value>D100H verbonden · Haptische feedback niet bevestigd</value>
+  </data>
+  <data name="ConnectionClosed" xml:space="preserve">
+    <value>Verbinding gesloten</value>
+  </data>
+  <data name="NoKeepalive" xml:space="preserve">
+    <value>Geen keepalive-antwoord ontvangen.</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>Wacht op bediening</value>
+  </data>
+  <data name="CapturingStatus" xml:space="preserve">
+    <value>Toetscombinatie vastleggen · {0}</value>
+  </data>
+  <data name="PausedStatus" xml:space="preserve">
+    <value>Gepauzeerd · {0}</value>
+  </data>
+  <data name="RotateClockwise" xml:space="preserve">
+    <value>Draaien rechtsom</value>
+  </data>
+  <data name="RotateCounterclockwise" xml:space="preserve">
+    <value>Draaien linksom</value>
+  </data>
+  <data name="Pressed" xml:space="preserve">
+    <value>{0} ingedrukt</value>
+  </data>
+  <data name="Released" xml:space="preserve">
+    <value>{0} losgelaten</value>
+  </data>
+  <data name="Dial" xml:space="preserve">
+    <value>Draaiknop</value>
+  </data>
+  <data name="LanguageReadError" xml:space="preserve">
+    <value>Taalvoorkeur kan niet worden gelezen: {0}</value>
+  </data>
+  <data name="LanguageSaveError" xml:space="preserve">
+    <value>Taal toegepast maar kon niet worden onthouden: {0}</value>
+  </data>
+  <data name="StartupReadError" xml:space="preserve">
+    <value>Opstartinstelling kan niet worden gelezen: {0}</value>
+  </data>
+  <data name="ThemeReadError" xml:space="preserve">
+    <value>Themapreferentie kan niet worden gelezen: {0}</value>
+  </data>
+  <data name="ThemeSaveError" xml:space="preserve">
+    <value>Thema kan niet worden onthouden: {0}</value>
+  </data>
+  <data name="WindowsThemeError" xml:space="preserve">
+    <value>Windows-thema kan niet worden gelezen; licht thema gebruikt. {0}</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>Opslaan niet volledig gelukt: {0}</value>
+  </data>
+  <data name="MouseSettingsError" xml:space="preserve">
+    <value>Windows-instellingen openen mislukt: {0}</value>
+  </data>
+  <data name="RecordingError" xml:space="preserve">
+    <value>Opname mislukt: {0}</value>
+  </data>
+  <data name="HookError" xml:space="preserve">
+    <value>Keyboardhook installeren mislukt.</value>
+  </data>
+  <data name="InputRefused" xml:space="preserve">
+    <value>Windows weigert invoer. Controleer of het doelprogramma als administrator draait.</value>
+  </data>
+  <data name="InvalidSettings" xml:space="preserve">
+    <value>Ongeldige of niet ondersteunde instellingen.</value>
+  </data>
+  <data name="InvalidProgram" xml:space="preserve">
+    <value>Een programmaprofiel heeft een ongeldig of dubbel programmapad.</value>
+  </data>
+  <data name="InvalidScroll" xml:space="preserve">
+    <value>Een profiel heeft ongeldige scrollinstellingen.</value>
+  </data>
+  <data name="InvalidButton" xml:space="preserve">
+    <value>Knop {0} heeft een ongeldige actie. Kies bij een sneltoets ook een hoofdtoets.</value>
+  </data>
+  <data name="EmptySettings" xml:space="preserve">
+    <value>Het instellingenbestand is leeg.</value>
+  </data>
+  <data name="SettingsLoadError" xml:space="preserve">
+    <value>Instellingen niet geladen: {0} Het oorspronkelijke bestand blijft bewaard: {1}</value>
+  </data>
+  <data name="ProgramFilter" xml:space="preserve">
+    <value>Programma’s (*.exe)</value>
+  </data>
+  <data name="ChooseProgram" xml:space="preserve">
+    <value>Kies een programma</value>
+  </data>
+  <data name="MissingExe" xml:space="preserve">
+    <value>Orbit D100H.exe is niet beschikbaar in de appmap.</value>
+  </data>
+  <data name="DeviceDisconnected" xml:space="preserve">
+    <value>Het apparaat is niet aangesloten.</value>
+  </data>
+  <data name="DeviceTopView" xml:space="preserve">
+    <value>Ulanzi D100H, bovenaanzicht</value>
+  </data>
+  <data name="DiagramCaption" xml:space="preserve">
+    <value>Bovenaanzicht · 8 = draaiknopdruk</value>
+  </data>
+  <data name="PressCaption" xml:space="preserve">
+    <value>druk</value>
+  </data>
+  <data name="HidOpenError" xml:space="preserve">
+    <value>HID-collectie openen mislukt.</value>
+  </data>
+</root>

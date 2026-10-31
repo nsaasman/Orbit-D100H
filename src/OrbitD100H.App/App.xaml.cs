@@ -19,39 +19,55 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        var languageError = LanguageUi.Initialize();
         // Share the legacy mutex so the old and renamed apps cannot control the same device together.
         mutex = new Mutex(true, @"Local\D100HControl", out var created);
         if (!created)
         {
-            MessageBox.Show("Orbit D100H is al actief. Open het venster via het pictogram in het systeemvak.", "Orbit D100H");
+            MessageBox.Show(Text.Get("AlreadyRunning"), "Orbit D100H");
             Shutdown(); return;
         }
         var store = new SettingsStore();
         var settings = store.Load();
         controller = new Controller(settings);
         controller.Start();
-        window = new MainWindow(controller, store, settings, ExitApplication);
+        window = new MainWindow(controller, store, settings, ExitApplication, languageError);
         MainWindow = window;
-        var menu = new Forms.ContextMenuStrip();
-        menu.Items.Add("Instellingen openen", null, (_, _) => ShowWindow());
-        var pause = new Forms.ToolStripMenuItem("Pauzeren");
-        pause.Click += (_, _) => controller.Pause(!controller.IsPaused);
-        menu.Items.Add(pause);
-        menu.Items.Add("Afsluiten", null, (_, _) => ExitApplication());
+        var menu = CreateTrayMenu(ShowWindow, () => controller.Pause(!controller.IsPaused), ExitApplication);
         trayIconStream = GetResourceStream(new Uri("Assets/OrbitD100H.ico", UriKind.Relative)).Stream;
         trayIcon = new System.Drawing.Icon(trayIconStream);
         tray = new Forms.NotifyIcon { Text = "Orbit D100H", Icon = trayIcon,
             ContextMenuStrip = menu, Visible = true };
         tray.DoubleClick += (_, _) => ShowWindow();
-        controller.Changed += () => Dispatcher.BeginInvoke(() =>
+        void RefreshTray()
         {
             if (exiting) return;
-            pause.Checked = controller.IsPaused;
-            pause.Text = controller.IsPaused ? "Hervatten" : "Pauzeren";
+            RefreshTrayMenu(menu, controller.IsPaused);
             tray.Text = ("Orbit D100H · " + controller.Status)[..Math.Min(63, ("Orbit D100H · " + controller.Status).Length)];
-        });
+        }
+        controller.Changed += () => Dispatcher.BeginInvoke(RefreshTray);
+        LanguageUi.Changed += RefreshTray;
+        RefreshTray();
         SystemEvents.SessionSwitch += SessionSwitch;
         if (!e.Args.Contains("--background") || store.LoadError is not null) ShowWindow();
+    }
+
+    internal static Forms.ContextMenuStrip CreateTrayMenu(Action open, Action pause, Action close)
+    {
+        var menu = new Forms.ContextMenuStrip();
+        menu.Items.Add(Text.Get("OpenSettings"), null, (_, _) => open());
+        menu.Items.Add(new Forms.ToolStripMenuItem(Text.Get("Pause"), null, (_, _) => pause()));
+        menu.Items.Add(Text.Get("Exit"), null, (_, _) => close());
+        return menu;
+    }
+
+    internal static void RefreshTrayMenu(Forms.ContextMenuStrip menu, bool paused)
+    {
+        menu.Items[0].Text = Text.Get("OpenSettings");
+        var pause = (Forms.ToolStripMenuItem)menu.Items[1];
+        pause.Checked = paused;
+        pause.Text = Text.Get(paused ? "Resume" : "Pause");
+        menu.Items[2].Text = Text.Get("Exit");
     }
 
     private void SessionSwitch(object sender, SessionSwitchEventArgs e)

@@ -5,12 +5,12 @@ public static class ButtonLayout
     // Stored bindings use protocol IDs. Visible numbers follow the user's annotated device image.
     private static readonly (int Number, string Position)[] ByProtocol =
     [
-        (3, "Boven links"), (4, "Boven midden"), (5, "Boven rechts"), (2, "Links boven"),
-        (6, "Rechts boven"), (1, "Links onder"), (7, "Rechts onder"), (8, "Draaiknopdruk")
+        (3, "TopLeft"), (4, "TopMiddle"), (5, "TopRight"), (2, "UpperLeft"),
+        (6, "UpperRight"), (1, "LowerLeft"), (7, "LowerRight"), (8, "DialPress")
     ];
 
     public static int Number(int protocolId) => Entry(protocolId).Number;
-    public static string PositionName(int protocolId) => Entry(protocolId).Position;
+    public static string PositionName(int protocolId) => Text.Get(Entry(protocolId).Position);
     public static int ProtocolId(int number)
     {
         var index = Array.FindIndex(ByProtocol, entry => entry.Number == number);

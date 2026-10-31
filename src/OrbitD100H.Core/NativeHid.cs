@@ -100,7 +100,7 @@ public static class NativeHid
         {
             var error = Marshal.GetLastWin32Error();
             handle.Dispose();
-            throw new Win32Exception(error, "HID-collectie openen mislukt.");
+            throw Text.Describe(new Win32Exception(error, Text.Get("HidOpenError")), "HidOpenError");
         }
         try { return new FileStream(handle, access, 1, isAsync: true); }
         catch { handle.Dispose(); throw; }

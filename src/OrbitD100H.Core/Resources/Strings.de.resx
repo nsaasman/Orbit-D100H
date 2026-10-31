@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Raw" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="RoutingHelp" xml:space="preserve">
+    <value>Drehen steuert das Programm unter dem Mauszeiger. Tasten steuern das aktive Programm.</value>
+  </data>
+  <data name="AddProgram" xml:space="preserve">
+    <value>Programm hinzufügen</value>
+  </data>
+  <data name="RemoveProfile" xml:space="preserve">
+    <value>Profil entfernen</value>
+  </data>
+  <data name="Haptic" xml:space="preserve">
+    <value>Haptisches Feedback beim Drehen</value>
+  </data>
+  <data name="HapticTip" xml:space="preserve">
+    <value>Gilt für alle Profile. Wird nach dem Speichern angewendet.</value>
+  </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Mit Windows starten</value>
+  </data>
+  <data name="CloseHelp" xml:space="preserve">
+    <value>Beim Schließen wird dieses Fenster ausgeblendet. Der Drehregler bleibt im Infobereich aktiv.</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Dunkles Design</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Helles Design</value>
+  </data>
+  <data name="ThemeSwitch" xml:space="preserve">
+    <value>Helles oder dunkles Design</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Pausieren</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Fortsetzen</value>
+  </data>
+  <data name="OpenSettings" xml:space="preserve">
+    <value>Einstellungen öffnen</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="AlreadyRunning" xml:space="preserve">
+    <value>Orbit D100H läuft bereits. Öffnen Sie das Fenster über das Symbol im Infobereich.</value>
+  </data>
+  <data name="EnableRouting" xml:space="preserve">
+    <value>Scrollen unter dem Mauszeiger aktivieren</value>
+  </data>
+  <data name="RoutingInstructions" xml:space="preserve">
+    <value>Für Scrollprofile: Aktivieren Sie in den Windows-Mauseinstellungen „Inaktive Fenster beim Daraufzeigen scrollen“. Die Lautstärkeregelung funktioniert weiterhin.</value>
+  </data>
+  <data name="OpenMouseSettings" xml:space="preserve">
+    <value>Mauseinstellungen öffnen</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>PROFIL BEARBEITEN</value>
+  </data>
+  <data name="GeneralDescription" xml:space="preserve">
+    <value>Standard für Programme ohne eigenes Profil</value>
+  </data>
+  <data name="DialDoes" xml:space="preserve">
+    <value>Drehreglerfunktion</value>
+  </data>
+  <data name="DialFunction" xml:space="preserve">
+    <value>Drehreglerfunktion</value>
+  </data>
+  <data name="Scroll" xml:space="preserve">
+    <value>Scrollen</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Lautstärke</value>
+  </data>
+  <data name="DialScroll" xml:space="preserve">
+    <value>Drehreglerfunktion: Scrollen</value>
+  </data>
+  <data name="DialVolume" xml:space="preserve">
+    <value>Drehreglerfunktion: Lautstärke</value>
+  </data>
+  <data name="Invert" xml:space="preserve">
+    <value>Richtung umkehren</value>
+  </data>
+  <data name="ScrollMode" xml:space="preserve">
+    <value>Scrollmodus</value>
+  </data>
+  <data name="ScrollSpeed" xml:space="preserve">
+    <value>Scrollgeschwindigkeit</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Mausradschritte pro Rastschritt: {0}</value>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Feste Schritte</value>
+  </data>
+  <data name="Smooth" xml:space="preserve">
+    <value>Flüssig</value>
+  </data>
+  <data name="ScrollHelp" xml:space="preserve">
+    <value>Rechtsherum nach unten, linksherum nach oben. Flüssiges Scrollen hat keinen Nachlauf. Das Zielprogramm bestimmt die Darstellung.</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>Tasten</value>
+  </data>
+  <data name="ButtonsHelp" xml:space="preserve">
+    <value>Tastenkombinationen bleiben beim Halten einer einzelnen Taste gedrückt. Medienaktionen und ein Druck auf den Drehregler senden einen Tastendruck. Klicken Sie auf eine Taste, um ihre Aktion zu wählen.</value>
+  </data>
+  <data name="ShortcutHelp" xml:space="preserve">
+    <value>Wählen Sie Modifikatortasten und eine Haupttaste oder klicken Sie auf Tastenkombination aufnehmen. Drücken Sie die Kombination und lassen Sie alle Tasten los. Die Aufnahme blockiert die Kombination. Esc bricht ab.</value>
+  </data>
+  <data name="AdminHelp" xml:space="preserve">
+    <value>Administratorfenster werden in dieser Version nicht unterstützt. Windows kann Eingaben an Programme mit erhöhten Rechten blockieren.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Einstellungen speichern</value>
+  </data>
+  <data name="ApplyAfterSave" xml:space="preserve">
+    <value>Einstellungen werden erst nach dem Speichern angewendet.</value>
+  </data>
+  <data name="Unsaved" xml:space="preserve">
+    <value>Ungespeicherte Änderungen</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Einstellungen gespeichert.</value>
+  </data>
+  <data name="ThemeApplied" xml:space="preserve">
+    <value>Design angewendet.</value>
+  </data>
+  <data name="ExitQuestion" xml:space="preserve">
+    <value>Änderungen vor dem Beenden von Orbit D100H speichern?</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>{0} · Aktives Profil unter dem Mauszeiger: {1}</value>
+  </data>
+  <data name="Button" xml:space="preserve">
+    <value>Taste {0}</value>
+  </data>
+  <data name="ButtonAction" xml:space="preserve">
+    <value>Aktion für Taste {0}</value>
+  </data>
+  <data name="ButtonMainKey" xml:space="preserve">
+    <value>Haupttaste für Taste {0}</value>
+  </data>
+  <data name="ButtonModifier" xml:space="preserve">
+    <value>Taste {0}: {1}</value>
+  </data>
+  <data name="ButtonPosition" xml:space="preserve">
+    <value>Taste {0} · {1}</value>
+  </data>
+  <data name="TopLeft" xml:space="preserve">
+    <value>Oben links</value>
+  </data>
+  <data name="TopMiddle" xml:space="preserve">
+    <value>Oben Mitte</value>
+  </data>
+  <data name="TopRight" xml:space="preserve">
+    <value>Oben rechts</value>
+  </data>
+  <data name="UpperLeft" xml:space="preserve">
+    <value>Links oben</value>
+  </data>
+  <data name="UpperRight" xml:space="preserve">
+    <value>Rechts oben</value>
+  </data>
+  <data name="LowerLeft" xml:space="preserve">
+    <value>Links unten</value>
+  </data>
+  <data name="LowerRight" xml:space="preserve">
+    <value>Rechts unten</value>
+  </data>
+  <data name="DialPress" xml:space="preserve">
+    <value>Druck auf den Drehregler</value>
+  </data>
+  <data name="NoAction" xml:space="preserve">
+    <value>Keine Aktion</value>
+  </data>
+  <data name="Shortcut" xml:space="preserve">
+    <value>Tastenkombination</value>
+  </data>
+  <data name="PlayPause" xml:space="preserve">
+    <value>Wiedergabe / Pause</value>
+  </data>
+  <data name="VolumeUp" xml:space="preserve">
+    <value>Lauter</value>
+  </data>
+  <data name="VolumeDown" xml:space="preserve">
+    <value>Leiser</value>
+  </data>
+  <data name="Mute" xml:space="preserve">
+    <value>Stummschalten</value>
+  </data>
+  <data name="ChooseKey" xml:space="preserve">
+    <value>Taste auswählen…</value>
+  </data>
+  <data name="RecordShortcut" xml:space="preserve">
+    <value>Tastenkombination aufnehmen</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Rechts</value>
+  </data>
+  <data name="Generic" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="ModifierLeft" xml:space="preserve">
+    <value>{0} links</value>
+  </data>
+  <data name="ModifierRight" xml:space="preserve">
+    <value>{0} rechts</value>
+  </data>
+  <data name="ModifierGeneric" xml:space="preserve">
+    <value>{0} (allgemein)</value>
+  </data>
+  <data name="RecordingHelp" xml:space="preserve">
+    <value>Drücken Sie die Kombination und lassen Sie alle Tasten los. Esc bricht ab. Maximal 20 Sekunden.</value>
+  </data>
+  <data name="ChooseKeyHelp" xml:space="preserve">
+    <value>Wählen Sie eine Taste, zum Beispiel S.</value>
+  </data>
+  <data name="KeyCode" xml:space="preserve">
+    <value>Taste {0:X2}</value>
+  </data>
+  <data name="Space" xml:space="preserve">
+    <value>Leertaste</value>
+  </data>
+  <data name="Backspace" xml:space="preserve">
+    <value>Rücktaste</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Eingabe</value>
+  </data>
+  <data name="Escape" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Entf</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Einfg</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Pos1</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="PageUp" xml:space="preserve">
+    <value>Bild auf</value>
+  </data>
+  <data name="PageDown" xml:space="preserve">
+    <value>Bild ab</value>
+  </data>
+  <data name="ArrowLeft" xml:space="preserve">
+    <value>Pfeil links</value>
+  </data>
+  <data name="ArrowRight" xml:space="preserve">
+    <value>Pfeil rechts</value>
+  </data>
+  <data name="ArrowUp" xml:space="preserve">
+    <value>Pfeil nach oben</value>
+  </data>
+  <data name="ArrowDown" xml:space="preserve">
+    <value>Pfeil nach unten</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Verbindung wird hergestellt…</value>
+  </data>
+  <data name="ConnectingDevice" xml:space="preserve">
+    <value>Verbindung mit D100H wird hergestellt…</value>
+  </data>
+  <data name="DeviceMissing" xml:space="preserve">
+    <value>Kein D100H gefunden. Schalten Sie den gekoppelten Drehregler ein.</value>
+  </data>
+  <data name="MultipleDevices" xml:space="preserve">
+    <value>Mehrere D100H-Vendor-Collections gefunden. Verbinden Sie nur einen Drehregler.</value>
+  </data>
+  <data name="ConnectionInterrupted" xml:space="preserve">
+    <value>Verbindung unterbrochen. Erneuter Verbindungsaufbau… ({0})</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Beendet</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>D100H verbunden</value>
+  </data>
+  <data name="HapticUnconfirmed" xml:space="preserve">
+    <value>D100H verbunden · Haptisches Feedback nicht bestätigt</value>
+  </data>
+  <data name="ConnectionClosed" xml:space="preserve">
+    <value>Verbindung geschlossen</value>
+  </data>
+  <data name="NoKeepalive" xml:space="preserve">
+    <value>Keine Keepalive-Antwort empfangen.</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>Warten auf Eingabe</value>
+  </data>
+  <data name="CapturingStatus" xml:space="preserve">
+    <value>Tastenkombination aufnehmen · {0}</value>
+  </data>
+  <data name="PausedStatus" xml:space="preserve">
+    <value>Pausiert · {0}</value>
+  </data>
+  <data name="RotateClockwise" xml:space="preserve">
+    <value>Drehen im Uhrzeigersinn</value>
+  </data>
+  <data name="RotateCounterclockwise" xml:space="preserve">
+    <value>Drehen gegen den Uhrzeigersinn</value>
+  </data>
+  <data name="Pressed" xml:space="preserve">
+    <value>{0} gedrückt</value>
+  </data>
+  <data name="Released" xml:space="preserve">
+    <value>{0} losgelassen</value>
+  </data>
+  <data name="Dial" xml:space="preserve">
+    <value>Drehregler</value>
+  </data>
+  <data name="LanguageReadError" xml:space="preserve">
+    <value>Spracheinstellung kann nicht gelesen werden: {0}</value>
+  </data>
+  <data name="LanguageSaveError" xml:space="preserve">
+    <value>Sprache angewendet, konnte aber nicht gespeichert werden: {0}</value>
+  </data>
+  <data name="StartupReadError" xml:space="preserve">
+    <value>Autostarteinstellung kann nicht gelesen werden: {0}</value>
+  </data>
+  <data name="ThemeReadError" xml:space="preserve">
+    <value>Designeinstellung kann nicht gelesen werden: {0}</value>
+  </data>
+  <data name="ThemeSaveError" xml:space="preserve">
+    <value>Designeinstellung kann nicht gespeichert werden: {0}</value>
+  </data>
+  <data name="WindowsThemeError" xml:space="preserve">
+    <value>Windows-Design kann nicht gelesen werden; helles Design wird verwendet. {0}</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>Einstellungen konnten nicht vollständig gespeichert werden: {0}</value>
+  </data>
+  <data name="MouseSettingsError" xml:space="preserve">
+    <value>Windows-Einstellungen konnten nicht geöffnet werden: {0}</value>
+  </data>
+  <data name="RecordingError" xml:space="preserve">
+    <value>Aufnahme fehlgeschlagen: {0}</value>
+  </data>
+  <data name="HookError" xml:space="preserve">
+    <value>Tastatur-Hook konnte nicht installiert werden.</value>
+  </data>
+  <data name="InputRefused" xml:space="preserve">
+    <value>Windows verweigert die Eingabe. Prüfen Sie, ob das Zielprogramm als Administrator ausgeführt wird.</value>
+  </data>
+  <data name="InvalidSettings" xml:space="preserve">
+    <value>Ungültige oder nicht unterstützte Einstellungen.</value>
+  </data>
+  <data name="InvalidProgram" xml:space="preserve">
+    <value>Ein Programmprofil hat einen ungültigen oder doppelten Programmpfad.</value>
+  </data>
+  <data name="InvalidScroll" xml:space="preserve">
+    <value>Ein Profil hat ungültige Scrolleinstellungen.</value>
+  </data>
+  <data name="InvalidButton" xml:space="preserve">
+    <value>Taste {0} hat eine ungültige Aktion. Wählen Sie bei einer Tastenkombination auch eine Haupttaste.</value>
+  </data>
+  <data name="EmptySettings" xml:space="preserve">
+    <value>Die Einstellungsdatei ist leer.</value>
+  </data>
+  <data name="SettingsLoadError" xml:space="preserve">
+    <value>Einstellungen nicht geladen: {0} Die Originaldatei bleibt erhalten: {1}</value>
+  </data>
+  <data name="ProgramFilter" xml:space="preserve">
+    <value>Programme (*.exe)</value>
+  </data>
+  <data name="ChooseProgram" xml:space="preserve">
+    <value>Programm auswählen</value>
+  </data>
+  <data name="MissingExe" xml:space="preserve">
+    <value>Orbit D100H.exe fehlt im App-Ordner.</value>
+  </data>
+  <data name="DeviceDisconnected" xml:space="preserve">
+    <value>Das Gerät ist nicht verbunden.</value>
+  </data>
+  <data name="DeviceTopView" xml:space="preserve">
+    <value>Ulanzi D100H, Draufsicht</value>
+  </data>
+  <data name="DiagramCaption" xml:space="preserve">
+    <value>Draufsicht · 8 = Druck auf den Drehregler</value>
+  </data>
+  <data name="PressCaption" xml:space="preserve">
+    <value>drücken</value>
+  </data>
+  <data name="HidOpenError" xml:space="preserve">
+    <value>HID-Collection konnte nicht geöffnet werden.</value>
+  </data>
+</root>

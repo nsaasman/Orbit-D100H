@@ -55,7 +55,7 @@ internal static class KeyboardRecorder
                 }
             };
             hook = SetWindowsHookEx(13, callback, GetModuleHandle(null), 0);
-            if (hook == 0) throw new Win32Exception(Marshal.GetLastWin32Error(), "Keyboardhook installeren mislukt.");
+            if (hook == 0) throw Text.Describe(new Win32Exception(Marshal.GetLastWin32Error(), Text.Get("HookError")), "HookError");
             while (true)
             {
                 var status = GetMessage(out _, 0, 0, 0);

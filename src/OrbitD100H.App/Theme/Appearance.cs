@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Windows;
+using OrbitD100H.Core;
 using System.Windows.Media;
 using Microsoft.Win32;
 
@@ -12,7 +13,7 @@ internal static class Appearance
     private const string WindowsThemePath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
     private static bool IsDark;
 
-    public static bool Initialize(out string? error)
+    public static bool Initialize(out LocalizedText? error)
     {
         var light = WindowsUsesLightTheme(out error);
         try
@@ -22,12 +23,12 @@ internal static class Appearance
             { light = preference == 0; error = null; }
         }
         catch (Exception e) when (e is UnauthorizedAccessException or System.Security.SecurityException or IOException)
-        { error = "Themapreferentie kan niet worden gelezen: " + e.Message; }
+        { error = new("ThemeReadError", Text.Error(e)); }
         Apply(light);
         return !light;
     }
 
-    public static string? SetDark(bool dark)
+    public static LocalizedText? SetDark(bool dark)
     {
         Apply(!dark);
         try
@@ -37,7 +38,7 @@ internal static class Appearance
             return null;
         }
         catch (Exception e) when (e is UnauthorizedAccessException or System.Security.SecurityException or IOException)
-        { return "Thema kan niet worden onthouden: " + e.Message; }
+        { return new("ThemeSaveError", Text.Error(e)); }
     }
 
     public static void ApplyWindowTheme(Window window)
@@ -67,7 +68,7 @@ internal static class Appearance
             Application.Current.Resources[keys[i]] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(values[i]));
     }
 
-    private static bool WindowsUsesLightTheme(out string? error)
+    private static bool WindowsUsesLightTheme(out LocalizedText? error)
     {
         error = null;
         try
@@ -76,7 +77,7 @@ internal static class Appearance
             return key?.GetValue("AppsUseLightTheme") is not int value || value != 0;
         }
         catch (Exception e) when (e is UnauthorizedAccessException or System.Security.SecurityException or IOException)
-        { error = "Windows-thema kan niet worden gelezen; licht thema gebruikt. " + e.Message; return true; }
+        { error = new("WindowsThemeError", Text.Error(e)); return true; }
     }
 
     [DllImport("dwmapi.dll", PreserveSig = true)]

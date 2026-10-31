@@ -30,28 +30,31 @@ public partial class MainWindow : Window
     private readonly Action exit;
     internal bool AllowClose { get; set; }
     private const string RunKey = @"Software\Microsoft\Windows\CurrentVersion\Run";
-    private static readonly string[] Actions = ["Geen actie", "Sneltoets", "Afspelen / pauzeren", "Volume omhoog", "Volume omlaag", "Dempen"];
+    private static readonly string[] ActionKeys = ["NoAction", "Shortcut", "PlayPause", "VolumeUp", "VolumeDown", "Mute"];
+    private LocalizedText feedback = new("ApplyAfterSave");
 
-    internal MainWindow(Controller controller, SettingsStore store, Settings settings, Action exit)
+    internal MainWindow(Controller controller, SettingsStore store, Settings settings, Action exit, LocalizedText? languageError = null)
     {
         this.controller = controller; this.store = store; this.settings = settings; this.exit = exit;
         var dark = Appearance.Initialize(out var themeError);
         InitializeComponent();
+        Language = System.Windows.Markup.XmlLanguage.GetLanguage(Text.Culture.Name);
+        LanguageCombo.SelectedValue = Text.Culture.Name;
         HapticFeedbackCheck.IsChecked = settings.HapticFeedbackEnabled;
         ScrollDialButton.IsChecked = true;
         DarkThemeCheck.IsChecked = dark;
-        DarkThemeCheck.Content = dark ? "Donker thema" : "Licht thema";
+        DarkThemeCheck.Content = Text.Get(dark ? "DarkTheme" : "LightTheme");
         profiles = new(settings.Programs.Prepend(settings.General));
         ProfilesList.ItemsSource = profiles;
         for (var button = 1; button <= 8; button++)
         {
             var row = new StackPanel { Visibility = button == selectedButton ? Visibility.Visible : Visibility.Collapsed };
-            var label = new TextBlock { Text = $"Knop {ButtonLayout.Number(button)}", FontSize = 20, FontWeight = FontWeights.SemiBold };
+            var label = new TextBlock { Text = Text.Get("Button", ButtonLayout.Number(button)), FontSize = 20, FontWeight = FontWeights.SemiBold };
             var position = new TextBlock { Text = DeviceDiagram.PositionName(button), Margin = new Thickness(0, 4, 0, 16) };
             position.SetResourceReference(ForegroundProperty, "Muted");
-            var kind = new ComboBox { ItemsSource = Actions, HorizontalAlignment = HorizontalAlignment.Left };
-            var shortcut = new ShortcutEditor(label.Text) { Visibility = Visibility.Collapsed };
-            System.Windows.Automation.AutomationProperties.SetName(kind, label.Text + " actie");
+            var kind = new ComboBox { ItemsSource = ActionKeys.Select(k => Text.Get(k)).ToArray(), HorizontalAlignment = HorizontalAlignment.Left };
+            var shortcut = new ShortcutEditor(ButtonLayout.Number(button)) { Visibility = Visibility.Collapsed };
+            System.Windows.Automation.AutomationProperties.SetName(kind, Text.Get("ButtonAction", ButtonLayout.Number(button)));
             kind.SelectionChanged += (_, _) => { shortcut.Visibility = kind.SelectedIndex == (int)ActionKind.Shortcut ? Visibility.Visible : Visibility.Collapsed; SetDirty(); };
             shortcut.Changed += SetDirty;
             shortcut.RecordingChanged += active =>
@@ -72,11 +75,12 @@ public partial class MainWindow : Window
         Diagram.ButtonSelected += SelectButton;
         try { using var key = Registry.CurrentUser.OpenSubKey(RunKey); StartupCheck.IsChecked = key?.GetValue("D100HControl") is string; }
         catch (Exception e) when (e is UnauthorizedAccessException or System.Security.SecurityException or IOException)
-        { FeedbackText.Text = "Opstartinstelling kan niet worden gelezen: " + e.Message; }
+        { feedback = new("StartupReadError", Text.Error(e)); }
         ProfilesList.SelectedIndex = 0;
         loading = false;
-        if (store.LoadError is not null) { FeedbackText.Text = store.LoadError; SaveButton.IsEnabled = false; }
-        else FeedbackText.Text = themeError ?? "Instellingen worden alleen na opslaan toegepast.";
+        if (store.LoadProblem is not null) { feedback = store.LoadProblem; SaveButton.IsEnabled = false; }
+        else feedback = languageError ?? themeError ?? feedback;
+        FeedbackText.Text = feedback.ToString();
         controller.Changed += ControllerChanged;
         Activated += (_, _) => controller.RefreshRouting();
         Closing += HideInsteadOfClose;
@@ -103,9 +107,9 @@ public partial class MainWindow : Window
     private void RefreshStatus()
     {
         ConnectionText.Text = controller.Status;
-        PauseButton.Content = controller.IsPaused ? "Hervatten" : "Pauzeren";
+        PauseButton.Content = Text.Get(controller.IsPaused ? "Resume" : "Pause");
         RoutingBanner.Visibility = controller.Routing ? Visibility.Collapsed : Visibility.Visible;
-        ActivityText.Text = $"{controller.LastEvent} · Runtimeprofiel onder de muis: {controller.ActiveProfile}";
+        ActivityText.Text = Text.Get("Activity", controller.LastEvent, controller.ActiveProfile);
     }
 
     private void HideInsteadOfClose(object? sender, CancelEventArgs e)
@@ -117,7 +121,7 @@ public partial class MainWindow : Window
     internal bool CanExit()
     {
         if (AllowClose || !dirty) return true;
-        var answer = MessageBox.Show(this, "Wijzigingen opslaan voordat Orbit D100H afsluit?", "Orbit D100H",
+        var answer = MessageBox.Show(this, Text.Get("ExitQuestion"), "Orbit D100H",
             MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
         return answer == MessageBoxResult.No || (answer == MessageBoxResult.Yes && Save());
     }
@@ -129,14 +133,14 @@ public partial class MainWindow : Window
         selected = ProfilesList.SelectedItem as Profile;
         if (selected is null) return;
         loading = true;
-        ProfileTitle.Text = selected.Name;
-        ProfilePath.Text = selected.ProgramPath ?? "Standaard voor programma’s zonder eigen profiel";
+        ProfileTitle.Text = selected == settings.General ? Text.Get("General") : selected.Name;
+        ProfilePath.Text = selected.ProgramPath ?? Text.Get("GeneralDescription");
         VolumeDialButton.IsChecked = selected.DialMode == DialMode.Volume;
         ScrollDialButton.IsChecked = selected.DialMode == DialMode.Scroll;
         ScrollSettings.Visibility = selected.DialMode == DialMode.Scroll ? Visibility.Visible : Visibility.Collapsed;
         ModeCombo.SelectedIndex = (int)selected.Mode;
         SpeedSlider.Value = selected.Speed;
-        SpeedLabel.Text = $"{selected.Speed} wielstappen per draaistap";
+        SpeedLabel.Text = Text.Get("Speed", selected.Speed);
         InvertCheck.IsChecked = selected.Invert;
         RemoveButton.IsEnabled = selected != settings.General;
         foreach (var (button, controls) in mappings)
@@ -164,7 +168,7 @@ public partial class MainWindow : Window
     {
         if (loading) return;
         dirty = true;
-        if (store.LoadError is null) FeedbackText.Text = "Niet opgeslagen wijzigingen";
+        if (store.LoadError is null) ShowFeedback(new("Unsaved"));
     }
     private void MarkDirty(object sender, RoutedEventArgs e) => SetDirty();
     private void DialModeChanged(object sender, RoutedEventArgs e)
@@ -173,15 +177,63 @@ public partial class MainWindow : Window
         SetDirty();
     }
     private void SpeedChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    { if (SpeedLabel is not null) SpeedLabel.Text = $"{(int)e.NewValue} wielstappen per draaistap"; SetDirty(); }
+    { if (SpeedLabel is not null) SpeedLabel.Text = Text.Get("Speed", (int)e.NewValue); SetDirty(); }
     private void TogglePause(object sender, RoutedEventArgs e) => controller.Pause(!controller.IsPaused);
 
     private void ChangeTheme(object sender, RoutedEventArgs e)
     {
         var error = Appearance.SetDark(DarkThemeCheck.IsChecked == true);
-        DarkThemeCheck.Content = DarkThemeCheck.IsChecked == true ? "Donker thema" : "Licht thema";
+        DarkThemeCheck.Content = Text.Get(DarkThemeCheck.IsChecked == true ? "DarkTheme" : "LightTheme");
         Appearance.ApplyWindowTheme(this);
-        FeedbackText.Text = error ?? "Thema toegepast.";
+        ShowFeedback(error ?? new("ThemeApplied"));
+    }
+
+    private void ShowFeedback(LocalizedText message)
+    { feedback = message; FeedbackText.Text = feedback.ToString(); }
+
+    private async void ChangeLanguage(object sender, SelectionChangedEventArgs e)
+    {
+        if (loading || LanguageCombo.SelectedValue is not string language || language == Text.Culture.Name) return;
+        LanguageCombo.IsEnabled = false;
+        try
+        {
+            await Task.WhenAll(mappings.Values.Select(c => c.Shortcut.CancelCaptureAsync()));
+            var error = LanguageUi.Change(language);
+            RefreshLanguage();
+            if (error is not null && store.LoadError is null) ShowFeedback(error);
+        }
+        finally { LanguageCombo.IsEnabled = true; }
+    }
+
+    private void RefreshLanguage()
+    {
+        loading = true;
+        try
+        {
+            Language = System.Windows.Markup.XmlLanguage.GetLanguage(Text.Culture.Name);
+            DarkThemeCheck.Content = Text.Get(DarkThemeCheck.IsChecked == true ? "DarkTheme" : "LightTheme");
+            if (selected is not null)
+            {
+                ProfileTitle.Text = selected == settings.General ? Text.Get("General") : selected.Name;
+                ProfilePath.Text = selected.ProgramPath ?? Text.Get("GeneralDescription");
+            }
+            SpeedLabel.Text = Text.Get("Speed", (int)SpeedSlider.Value);
+            foreach (var (button, controls) in mappings)
+            {
+                var row = (StackPanel)controls.Row;
+                ((TextBlock)row.Children[0]).Text = Text.Get("Button", ButtonLayout.Number(button));
+                ((TextBlock)row.Children[1]).Text = DeviceDiagram.PositionName(button);
+                var index = controls.Kind.SelectedIndex;
+                controls.Kind.ItemsSource = ActionKeys.Select(k => Text.Get(k)).ToArray();
+                controls.Kind.SelectedIndex = index;
+                System.Windows.Automation.AutomationProperties.SetName(controls.Kind, Text.Get("ButtonAction", ButtonLayout.Number(button)));
+                controls.Shortcut.RefreshLanguage();
+            }
+            Diagram.RefreshLanguage();
+            FeedbackText.Text = feedback.ToString();
+            RefreshStatus();
+        }
+        finally { loading = false; }
     }
 
     private void WindowLoaded(object sender, RoutedEventArgs e) => UpdateWindowBounds();
@@ -282,7 +334,7 @@ public partial class MainWindow : Window
 
     private void AddProgram(object sender, RoutedEventArgs e)
     {
-        var picker = new OpenFileDialog { Title = "Programma voor dit profiel kiezen", Filter = "Programma’s (*.exe)|*.exe", CheckFileExists = true };
+        var picker = new OpenFileDialog { Title = Text.Get("ChooseProgram"), Filter = Text.Get("ProgramFilter") + "|*.exe", CheckFileExists = true };
         if (picker.ShowDialog(this) != true) return;
         var existing = profiles.FirstOrDefault(p => string.Equals(p.ProgramPath, picker.FileName, StringComparison.OrdinalIgnoreCase));
         if (existing is not null) { ProfilesList.SelectedItem = existing; return; }
@@ -309,20 +361,20 @@ public partial class MainWindow : Window
             if (StartupCheck.IsChecked == true)
             {
                 var executable = Path.Combine(AppContext.BaseDirectory, "Orbit D100H.exe");
-                if (!File.Exists(executable)) throw new IOException("Orbit D100H.exe is niet beschikbaar in de appmap.");
+                if (!File.Exists(executable)) throw Text.Describe(new IOException(Text.Get("MissingExe")), "MissingExe");
                 key.SetValue("D100HControl", $"\"{executable}\" --background", RegistryValueKind.String);
             }
             else key.DeleteValue("D100HControl", throwOnMissingValue: false);
-            FeedbackText.Text = "Instellingen opgeslagen.";
+            ShowFeedback(new("Saved"));
             return true;
         }
         catch (Exception ex) when (ex is IOException or InvalidDataException or UnauthorizedAccessException or InvalidOperationException or ArgumentException or System.Security.SecurityException)
-        { FeedbackText.Text = "Opslaan niet volledig gelukt: " + ex.Message; return false; }
+        { ShowFeedback(new("SaveError", Text.Error(ex))); return false; }
     }
 
     private void OpenMouseSettings(object sender, RoutedEventArgs e)
     {
         try { Process.Start(new ProcessStartInfo("ms-settings:mousetouchpad") { UseShellExecute = true }); }
-        catch (Win32Exception ex) { FeedbackText.Text = "Windows-instellingen openen mislukt: " + ex.Message; }
+        catch (Win32Exception ex) { ShowFeedback(new("MouseSettingsError", Text.Error(ex))); }
     }
 }

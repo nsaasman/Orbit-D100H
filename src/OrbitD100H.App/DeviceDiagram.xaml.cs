@@ -13,16 +13,21 @@ public partial class DeviceDiagram : UserControl
     {
         InitializeComponent();
         keys = [Position1, Position2, Position3, Position4, Position5, Position6, Position7, Position8];
+        RefreshLanguage();
+        Select(ButtonLayout.ProtocolId(1));
+    }
+
+    internal void RefreshLanguage()
+    {
         foreach (var key in keys)
         {
             var number = int.Parse((string)key.Tag);
             var protocolId = ButtonLayout.ProtocolId(number);
-            var label = $"Knop {number} · {ButtonLayout.PositionName(protocolId)}";
+            var label = Text.Get("ButtonPosition", number, ButtonLayout.PositionName(protocolId));
             if (number != 8) key.Content = number.ToString();
             key.ToolTip = label;
             System.Windows.Automation.AutomationProperties.SetName(key, label);
         }
-        Select(ButtonLayout.ProtocolId(1));
     }
 
     public static string PositionName(int button) => ButtonLayout.PositionName(button);

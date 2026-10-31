@@ -7,6 +7,7 @@ internal static class SelfTest
         var checks = 0;
         checks += HoldTests.Run();
         checks += ControllerHoldTests.Run();
+        checks += LocalizationTests.Run();
         void Assert(bool condition, string description)
         {
             if (!condition) throw new InvalidOperationException($"Test mislukt: {description}");
@@ -272,7 +273,7 @@ internal static class SelfTest
         {
             var desired = true;
             var received = new System.Collections.Concurrent.ConcurrentQueue<DialEvent>();
-            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, string Message)>();
+            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, LocalizedText Message)>();
             var session = DialService.RunSessionAsync(stream, 65, 65, received.Enqueue,
                 (connected, message) => statuses.Enqueue((connected, message)), stop.Token, () => desired);
             try
@@ -297,19 +298,19 @@ internal static class SelfTest
             Assert(received.Count == 0, "haptische en keepalive-antwoorden worden niet als knopinvoer gemeld");
             Assert(stream.KeepAliveTimes.Count >= 2 && !stream.ConcurrentWriteDetected,
                 "haptiek behoudt keepalive en gebruikt dezelfde schrijver");
-            Assert(statuses.Any(s => s.Connected && s.Message == "D100H verbonden"), "haptische bevestigingen gelden niet als keepalive");
+            Assert(statuses.Any(s => s.Connected && s.Message.Key == "Connected"), "haptische bevestigingen gelden niet als keepalive");
         }
 
         using (var stream = new SlowHidStream { AcknowledgeHaptics = false, WriteDelay = TimeSpan.FromMilliseconds(10) })
         using (var stop = new CancellationTokenSource(TimeSpan.FromSeconds(8)))
         {
-            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, string Message)>();
+            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, LocalizedText Message)>();
             var session = DialService.RunSessionAsync(stream, 65, 65, _ => { },
                 (connected, message) => statuses.Enqueue((connected, message)), stop.Token, () => false);
             var stayedConnectedThroughWarning = false;
             try
             {
-                var warned = SpinWait.SpinUntil(() => statuses.Any(s => s.Message.Contains("Haptische feedback niet bevestigd")), TimeSpan.FromSeconds(7));
+                var warned = SpinWait.SpinUntil(() => statuses.Any(s => (s.Message.Key == "HapticUnconfirmed")), TimeSpan.FromSeconds(7));
                 var observed = statuses.ToArray();
                 var firstConnected = Array.FindIndex(observed, s => s.Connected);
                 stayedConnectedThroughWarning = warned && firstConnected >= 0
@@ -321,39 +322,39 @@ internal static class SelfTest
                 try { session.GetAwaiter().GetResult(); }
                 catch (OperationCanceledException) { }
             }
-            Assert(statuses.Any(s => s.Connected && s.Message.Contains("Haptische feedback niet bevestigd")),
+            Assert(statuses.Any(s => s.Connected && (s.Message.Key == "HapticUnconfirmed")),
                 "ontbrekende haptische bevestiging toont statuswaarschuwing");
             Assert(stayedConnectedThroughWarning,
                 "ontbrekende haptische bevestiging verbreekt verbinding niet");
             Assert(stream.Writes.Count(w => Convert.ToHexString(w.AsSpan(1, 8)) == "5F4E1D1371B29A76") == 1,
                 "ontbrekende bevestiging veroorzaakt geen herhaalde haptiekopdracht");
-            Assert(statuses.Count(s => s.Message.Contains("Haptische feedback niet bevestigd")) == 1,
+            Assert(statuses.Count(s => (s.Message.Key == "HapticUnconfirmed")) == 1,
                 "ontbrekende bevestiging toont één waarschuwing");
         }
 
         using (var stream = new SlowHidStream { WrongHapticAcknowledgement = true, WriteDelay = TimeSpan.FromMilliseconds(10) })
         using (var stop = new CancellationTokenSource(TimeSpan.FromSeconds(7)))
         {
-            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, string Message)>();
+            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, LocalizedText Message)>();
             var session = DialService.RunSessionAsync(stream, 65, 65, _ => { },
                 (connected, message) => statuses.Enqueue((connected, message)), stop.Token, () => false);
-            try { SpinWait.SpinUntil(() => statuses.Any(s => s.Message.Contains("Haptische feedback niet bevestigd")), TimeSpan.FromSeconds(6)); }
+            try { SpinWait.SpinUntil(() => statuses.Any(s => (s.Message.Key == "HapticUnconfirmed")), TimeSpan.FromSeconds(6)); }
             finally
             {
                 stop.Cancel();
                 try { session.GetAwaiter().GetResult(); }
                 catch (OperationCanceledException) { }
             }
-            Assert(statuses.Any(s => s.Connected && s.Message.Contains("Haptische feedback niet bevestigd")),
+            Assert(statuses.Any(s => s.Connected && (s.Message.Key == "HapticUnconfirmed")),
                 "bevestiging van verkeerde haptische keuze wordt genegeerd");
-            Assert(statuses.Count(s => s.Message.Contains("Haptische feedback niet bevestigd")) == 1,
+            Assert(statuses.Count(s => (s.Message.Key == "HapticUnconfirmed")) == 1,
                 "verkeerde bevestiging toont één waarschuwing");
         }
 
         using (var stream = new SlowHidStream { SendOppositeHapticAcknowledgement = true, WriteDelay = TimeSpan.FromMilliseconds(10) })
         using (var stop = new CancellationTokenSource(TimeSpan.FromSeconds(7)))
         {
-            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, string Message)>();
+            var statuses = new System.Collections.Concurrent.ConcurrentQueue<(bool Connected, LocalizedText Message)>();
             var session = DialService.RunSessionAsync(stream, 65, 65, _ => { },
                 (connected, message) => statuses.Enqueue((connected, message)), stop.Token, () => true);
             try { Thread.Sleep(TimeSpan.FromSeconds(4.5)); }
@@ -363,7 +364,7 @@ internal static class SelfTest
                 try { session.GetAwaiter().GetResult(); }
                 catch (OperationCanceledException) { }
             }
-            Assert(statuses.All(s => !s.Message.Contains("Haptische feedback niet bevestigd")),
+            Assert(statuses.All(s => !(s.Message.Key == "HapticUnconfirmed")),
                 "late opposite ACK does not undo matching confirmation");
         }
 

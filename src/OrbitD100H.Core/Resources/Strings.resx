@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Raw" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="RoutingHelp" xml:space="preserve">
+    <value>Turning follows the app under the mouse. Buttons follow the active app.</value>
+  </data>
+  <data name="AddProgram" xml:space="preserve">
+    <value>Add program</value>
+  </data>
+  <data name="RemoveProfile" xml:space="preserve">
+    <value>Remove profile</value>
+  </data>
+  <data name="Haptic" xml:space="preserve">
+    <value>Haptic feedback when turning</value>
+  </data>
+  <data name="HapticTip" xml:space="preserve">
+    <value>Applies to all profiles. Takes effect after saving.</value>
+  </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Start with Windows</value>
+  </data>
+  <data name="CloseHelp" xml:space="preserve">
+    <value>Closing hides this window. The dial stays active in the system tray.</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Dark theme</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Light theme</value>
+  </data>
+  <data name="ThemeSwitch" xml:space="preserve">
+    <value>Light or dark theme</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="OpenSettings" xml:space="preserve">
+    <value>Open settings</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="AlreadyRunning" xml:space="preserve">
+    <value>Orbit D100H is already running. Open its window using the system tray icon.</value>
+  </data>
+  <data name="EnableRouting" xml:space="preserve">
+    <value>Enable scrolling under the mouse</value>
+  </data>
+  <data name="RoutingInstructions" xml:space="preserve">
+    <value>For scroll profiles: in Windows mouse settings, enable “Scroll inactive windows when I hover over them”. Volume control keeps working.</value>
+  </data>
+  <data name="OpenMouseSettings" xml:space="preserve">
+    <value>Open mouse settings</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>EDIT PROFILE</value>
+  </data>
+  <data name="GeneralDescription" xml:space="preserve">
+    <value>Default for programs without their own profile</value>
+  </data>
+  <data name="DialDoes" xml:space="preserve">
+    <value>Dial function</value>
+  </data>
+  <data name="DialFunction" xml:space="preserve">
+    <value>Dial function</value>
+  </data>
+  <data name="Scroll" xml:space="preserve">
+    <value>Scroll</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="DialScroll" xml:space="preserve">
+    <value>Dial function: scroll</value>
+  </data>
+  <data name="DialVolume" xml:space="preserve">
+    <value>Dial function: volume</value>
+  </data>
+  <data name="Invert" xml:space="preserve">
+    <value>Reverse direction</value>
+  </data>
+  <data name="ScrollMode" xml:space="preserve">
+    <value>Scroll mode</value>
+  </data>
+  <data name="ScrollSpeed" xml:space="preserve">
+    <value>Scroll speed</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Wheel steps per dial step: {0}</value>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Fixed steps</value>
+  </data>
+  <data name="Smooth" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="ScrollHelp" xml:space="preserve">
+    <value>Clockwise scrolls down; counterclockwise scrolls up. Smooth scrolling has no momentum. The target app determines the result.</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
+  <data name="ButtonsHelp" xml:space="preserve">
+    <value>Shortcuts stay pressed while you hold an individual button. Media actions and dial presses send one keystroke. Click a button to choose its action.</value>
+  </data>
+  <data name="ShortcutHelp" xml:space="preserve">
+    <value>Choose modifiers and a main key, or click Record shortcut. Press the combination and release all keys. Recording blocks the combination. Esc cancels.</value>
+  </data>
+  <data name="AdminHelp" xml:space="preserve">
+    <value>Administrator windows are not supported in this version. Windows may block input to elevated programs.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save settings</value>
+  </data>
+  <data name="ApplyAfterSave" xml:space="preserve">
+    <value>Settings take effect only after saving.</value>
+  </data>
+  <data name="Unsaved" xml:space="preserve">
+    <value>Unsaved changes</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Settings saved.</value>
+  </data>
+  <data name="ThemeApplied" xml:space="preserve">
+    <value>Theme applied.</value>
+  </data>
+  <data name="ExitQuestion" xml:space="preserve">
+    <value>Save changes before closing Orbit D100H?</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>{0} · Runtime profile under the mouse: {1}</value>
+  </data>
+  <data name="Button" xml:space="preserve">
+    <value>Button {0}</value>
+  </data>
+  <data name="ButtonAction" xml:space="preserve">
+    <value>Button {0} action</value>
+  </data>
+  <data name="ButtonMainKey" xml:space="preserve">
+    <value>Button {0} main key</value>
+  </data>
+  <data name="ButtonModifier" xml:space="preserve">
+    <value>Button {0} {1}</value>
+  </data>
+  <data name="ButtonPosition" xml:space="preserve">
+    <value>Button {0} · {1}</value>
+  </data>
+  <data name="TopLeft" xml:space="preserve">
+    <value>Top left</value>
+  </data>
+  <data name="TopMiddle" xml:space="preserve">
+    <value>Top middle</value>
+  </data>
+  <data name="TopRight" xml:space="preserve">
+    <value>Top right</value>
+  </data>
+  <data name="UpperLeft" xml:space="preserve">
+    <value>Upper left</value>
+  </data>
+  <data name="UpperRight" xml:space="preserve">
+    <value>Upper right</value>
+  </data>
+  <data name="LowerLeft" xml:space="preserve">
+    <value>Lower left</value>
+  </data>
+  <data name="LowerRight" xml:space="preserve">
+    <value>Lower right</value>
+  </data>
+  <data name="DialPress" xml:space="preserve">
+    <value>Dial press</value>
+  </data>
+  <data name="NoAction" xml:space="preserve">
+    <value>No action</value>
+  </data>
+  <data name="Shortcut" xml:space="preserve">
+    <value>Keyboard shortcut</value>
+  </data>
+  <data name="PlayPause" xml:space="preserve">
+    <value>Play / pause</value>
+  </data>
+  <data name="VolumeUp" xml:space="preserve">
+    <value>Volume up</value>
+  </data>
+  <data name="VolumeDown" xml:space="preserve">
+    <value>Volume down</value>
+  </data>
+  <data name="Mute" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="ChooseKey" xml:space="preserve">
+    <value>Choose a key…</value>
+  </data>
+  <data name="RecordShortcut" xml:space="preserve">
+    <value>Record shortcut</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="Generic" xml:space="preserve">
+    <value>Generic</value>
+  </data>
+  <data name="ModifierLeft" xml:space="preserve">
+    <value>Left {0}</value>
+  </data>
+  <data name="ModifierRight" xml:space="preserve">
+    <value>Right {0}</value>
+  </data>
+  <data name="ModifierGeneric" xml:space="preserve">
+    <value>{0} (generic)</value>
+  </data>
+  <data name="RecordingHelp" xml:space="preserve">
+    <value>Press the combination and release all keys. Esc cancels. Maximum 20 seconds.</value>
+  </data>
+  <data name="ChooseKeyHelp" xml:space="preserve">
+    <value>Choose a key, for example S.</value>
+  </data>
+  <data name="KeyCode" xml:space="preserve">
+    <value>Key {0:X2}</value>
+  </data>
+  <data name="Space" xml:space="preserve">
+    <value>Space</value>
+  </data>
+  <data name="Backspace" xml:space="preserve">
+    <value>Backspace</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="Escape" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="PageUp" xml:space="preserve">
+    <value>Page Up</value>
+  </data>
+  <data name="PageDown" xml:space="preserve">
+    <value>Page Down</value>
+  </data>
+  <data name="ArrowLeft" xml:space="preserve">
+    <value>Left arrow</value>
+  </data>
+  <data name="ArrowRight" xml:space="preserve">
+    <value>Right arrow</value>
+  </data>
+  <data name="ArrowUp" xml:space="preserve">
+    <value>Up arrow</value>
+  </data>
+  <data name="ArrowDown" xml:space="preserve">
+    <value>Down arrow</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Connecting…</value>
+  </data>
+  <data name="ConnectingDevice" xml:space="preserve">
+    <value>Connecting to D100H…</value>
+  </data>
+  <data name="DeviceMissing" xml:space="preserve">
+    <value>No D100H found. Turn on the paired dial.</value>
+  </data>
+  <data name="MultipleDevices" xml:space="preserve">
+    <value>Multiple D100H vendor collections found. Connect only one dial.</value>
+  </data>
+  <data name="ConnectionInterrupted" xml:space="preserve">
+    <value>Connection lost. Reconnecting… ({0})</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>D100H connected</value>
+  </data>
+  <data name="HapticUnconfirmed" xml:space="preserve">
+    <value>D100H connected · Haptic feedback not confirmed</value>
+  </data>
+  <data name="ConnectionClosed" xml:space="preserve">
+    <value>Connection closed</value>
+  </data>
+  <data name="NoKeepalive" xml:space="preserve">
+    <value>No keepalive response received.</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>Waiting for input</value>
+  </data>
+  <data name="CapturingStatus" xml:space="preserve">
+    <value>Recording shortcut · {0}</value>
+  </data>
+  <data name="PausedStatus" xml:space="preserve">
+    <value>Paused · {0}</value>
+  </data>
+  <data name="RotateClockwise" xml:space="preserve">
+    <value>Turning clockwise</value>
+  </data>
+  <data name="RotateCounterclockwise" xml:space="preserve">
+    <value>Turning counterclockwise</value>
+  </data>
+  <data name="Pressed" xml:space="preserve">
+    <value>{0} pressed</value>
+  </data>
+  <data name="Released" xml:space="preserve">
+    <value>{0} released</value>
+  </data>
+  <data name="Dial" xml:space="preserve">
+    <value>Dial</value>
+  </data>
+  <data name="LanguageReadError" xml:space="preserve">
+    <value>Cannot read language preference: {0}</value>
+  </data>
+  <data name="LanguageSaveError" xml:space="preserve">
+    <value>Language applied but could not be saved: {0}</value>
+  </data>
+  <data name="StartupReadError" xml:space="preserve">
+    <value>Cannot read startup setting: {0}</value>
+  </data>
+  <data name="ThemeReadError" xml:space="preserve">
+    <value>Cannot read theme preference: {0}</value>
+  </data>
+  <data name="ThemeSaveError" xml:space="preserve">
+    <value>Cannot save theme preference: {0}</value>
+  </data>
+  <data name="WindowsThemeError" xml:space="preserve">
+    <value>Cannot read Windows theme; using light theme. {0}</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>Settings could not be fully saved: {0}</value>
+  </data>
+  <data name="MouseSettingsError" xml:space="preserve">
+    <value>Could not open Windows settings: {0}</value>
+  </data>
+  <data name="RecordingError" xml:space="preserve">
+    <value>Recording failed: {0}</value>
+  </data>
+  <data name="HookError" xml:space="preserve">
+    <value>Could not install keyboard hook.</value>
+  </data>
+  <data name="InputRefused" xml:space="preserve">
+    <value>Windows refused input. Check whether the target program is running as administrator.</value>
+  </data>
+  <data name="InvalidSettings" xml:space="preserve">
+    <value>Invalid or unsupported settings.</value>
+  </data>
+  <data name="InvalidProgram" xml:space="preserve">
+    <value>A program profile has an invalid or duplicate program path.</value>
+  </data>
+  <data name="InvalidScroll" xml:space="preserve">
+    <value>A profile has invalid scroll settings.</value>
+  </data>
+  <data name="InvalidButton" xml:space="preserve">
+    <value>Button {0} has an invalid action. Also choose a main key for a shortcut.</value>
+  </data>
+  <data name="EmptySettings" xml:space="preserve">
+    <value>The settings file is empty.</value>
+  </data>
+  <data name="SettingsLoadError" xml:space="preserve">
+    <value>Settings not loaded: {0} The original file is preserved: {1}</value>
+  </data>
+  <data name="ProgramFilter" xml:space="preserve">
+    <value>Programs (*.exe)</value>
+  </data>
+  <data name="ChooseProgram" xml:space="preserve">
+    <value>Choose a program</value>
+  </data>
+  <data name="MissingExe" xml:space="preserve">
+    <value>Orbit D100H.exe is missing from the app folder.</value>
+  </data>
+  <data name="DeviceDisconnected" xml:space="preserve">
+    <value>The device is not connected.</value>
+  </data>
+  <data name="DeviceTopView" xml:space="preserve">
+    <value>Ulanzi D100H, top view</value>
+  </data>
+  <data name="DiagramCaption" xml:space="preserve">
+    <value>Top view · 8 = dial press</value>
+  </data>
+  <data name="PressCaption" xml:space="preserve">
+    <value>press</value>
+  </data>
+  <data name="HidOpenError" xml:space="preserve">
+    <value>Could not open the HID collection.</value>
+  </data>
+</root>

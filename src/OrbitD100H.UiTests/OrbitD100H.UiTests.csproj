@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../OrbitD100H.App/OrbitD100H.App.csproj" /></ItemGroup>
+  <ItemGroup><None Include="../OrbitD100H.App/App.xaml" Link="AppResources.xaml" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+</Project>
